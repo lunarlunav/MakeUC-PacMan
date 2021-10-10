@@ -21,6 +21,7 @@ HELP.md
 .iml
 *.ipr
 *.iml
+out/
 
 ### visual studio code rules ###
 .vscode
