@@ -1,6 +1,5 @@
 package main;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -67,21 +66,21 @@ public class Board extends JPanel implements ActionListener {
     private Timer timer;
 
     private final short[] levelData = {
-            19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
-            17, 16, 16, 16, 16, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            25, 24, 24, 24, 28, 0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
-            0,  0,  0,  0,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
-            19, 18, 18, 18, 18, 18, 16, 16, 16, 16, 24, 24, 24, 24, 20,
-            17, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
-            17, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
-            17, 16, 16, 16, 24, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
-            17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 18, 18, 18, 18, 20,
-            17, 24, 24, 28, 0, 25, 24, 24, 16, 16, 16, 16, 16, 16, 20,
-            21, 0,  0,  0,  0,  0,  0,   0, 17, 16, 16, 16, 16, 16, 20,
-            17, 18, 18, 22, 0, 19, 18, 18, 16, 16, 16, 16, 16, 16, 20,
-            17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            25, 24, 24, 24, 26, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28
+            19, 18, 26, 18, 18, 18, 18, 18, 18, 18, 18, 18, 26, 18, 22,
+            17, 28,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,  0, 25, 20,
+            21,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,  0,  0, 21,
+            17, 18, 18, 16, 16, 16, 16, 16, 16, 16, 16, 16, 18, 18, 20,
+            17, 16, 16, 24, 24, 24, 24, 24, 24, 24, 24, 24, 16, 16, 20,
+            17, 16, 20,  0,  0,  0,  0,  0,  0,  0,  0,  0, 17, 16, 20,
+            17, 16, 16, 18, 18, 18, 18, 18, 18, 18, 18, 18, 16, 16, 20,
+            17, 16, 16, 16, 16, 16, 16, 24, 16, 16, 16, 16, 16, 16, 20,
+            17, 24, 16, 16, 16, 16, 20,  0, 17, 16, 16, 16, 16, 24, 20,
+            21,  0, 17, 16, 16, 24, 28,  0, 25, 24, 16, 16, 20,  0, 21,
+            21,  0, 17, 16, 20,  0,  0,  0,  0,  0, 17, 16, 20,  0, 21,
+            21,  0, 17, 16, 16, 18, 18, 18, 18, 18, 16, 16, 20,  0, 21,
+            21,  0, 25, 24, 24, 24, 16, 16, 16, 24, 24, 24, 28,  0, 21,
+            21,  0,  0,  0,  0,  0, 17, 16, 20,  0,  0,  0,  0,  0, 21,
+            25, 26, 26, 26, 26, 26, 24, 24, 24, 26, 26, 26, 26, 26, 28
     };
 
     public Board() {
@@ -93,12 +92,12 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void loadImages() {
-        up = new ImageIcon("../resources/up-0.png").getImage();
-        down = new ImageIcon("../resources/down-0.png").getImage();
-        left = new ImageIcon("../resources/left-0.png").getImage();
-        right = new ImageIcon("../resources/right-0.png").getImage();
-        ghost = new ImageIcon("../resources/ghost-0.png").getImage();
-        heart = new ImageIcon("heart.png").getImage();
+        up = new ImageIcon(getClass().getResource("../resources/up.gif")).getImage();
+        down = new ImageIcon(getClass().getResource("../resources/down.gif")).getImage();
+        left = new ImageIcon(getClass().getResource("../resources/left.gif")).getImage();
+        right = new ImageIcon(getClass().getResource("../resources/right.gif")).getImage();
+        ghost = new ImageIcon(getClass().getResource("../resources/ghost.gif")).getImage();
+        heart = new ImageIcon(getClass().getResource("../resources/heart.png")).getImage();
     }
 
     private void initVariables() {
@@ -132,9 +131,9 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void showIntroScreen(Graphics2D g2d) {
-        String start = "Press SPACE to start";
-        g2d.setColor(Color.yellow);
-        g2d.drawString(start, SCREEN_SIZE / 4, 150);
+        String start = "Press ENTER to start";
+        g2d.setColor(Color.white);
+        g2d.drawString(start, SCREEN_SIZE / 4 + 20, 135);
     }
 
     public void drawMaze(Graphics2D g2d) {
@@ -143,7 +142,7 @@ public class Board extends JPanel implements ActionListener {
         for (int y = 0; y < SCREEN_SIZE; y += BLOCK_SIZE) {
             for (int x = 0; x < SCREEN_SIZE; x += BLOCK_SIZE) {
 
-                g2d.setColor(new Color(0, 72, 251));
+                g2d.setColor(new Color(109, 109, 109));
                 g2d.setStroke(new BasicStroke(5));
 
                 if ((levelData[i] == 0)) {
@@ -162,7 +161,7 @@ public class Board extends JPanel implements ActionListener {
                     g2d.drawLine(x, y + BLOCK_SIZE - 1, x + BLOCK_SIZE - 1, y + BLOCK_SIZE - 1);
                 }
                 if ((screenData[i] & 16) != 0) {
-                    g2d.setColor(new Color(255, 255, 255));
+                    g2d.setColor(Color.blue);
                     g2d.fillOval(x + 10, y + 10, 6, 6);
                 }
                 i++;
@@ -172,7 +171,7 @@ public class Board extends JPanel implements ActionListener {
 
     public void drawScore(Graphics2D g2d) {
         g2d.setFont(smallFont);
-        g2d.setColor(new Color(5, 151, 79));
+        g2d.setColor(new Color(5, 181, 79));
         String s = "Score: " + score;
         g2d.drawString(s, SCREEN_SIZE / 2 + 96, SCREEN_SIZE + 16);
 
@@ -242,15 +241,14 @@ public class Board extends JPanel implements ActionListener {
                 }
             }
 
-            if ((pacmanDX == -1 && pacmanY == 0 && (ch & 1) != 0)
+            if ((pacmanDX == -1 && pacmanDY == 0 && (ch & 1) != 0)
                     || (pacmanDX == 1 && pacmanDY == 0 && (ch & 4) != 0)
                     || (pacmanDX == 0 && pacmanDY == -1 && (ch & 2) != 0)
-                    || pacmanDX == 0 && pacmanDY == 1 && (ch & 8) != 0) {
+                    || (pacmanDX == 0 && pacmanDY == 1 && (ch & 8) != 0)) {
                 pacmanDX = 0;
                 pacmanDY = 0;
             }
         }
-
         pacmanX = pacmanX + PACMAN_SPEED * pacmanDX;
         pacmanY = pacmanY + PACMAN_SPEED * pacmanDY;
     }
@@ -306,7 +304,7 @@ public class Board extends JPanel implements ActionListener {
             ghostY[i] = ghostY[i] + (ghostDY[i] * ghostSpeed[i]);
             drawGhost(g2d, ghostX[i] + 1, ghostY[i] + 1);
 
-            if (pacmanX > (ghostY[i] - 12) && pacmanX < (ghostX[i] + 12)
+            if (pacmanX > (ghostX[i] - 12) && pacmanX < (ghostX[i] + 12)
                     && pacmanY > (ghostY[i] - 12) && pacmanY < (ghostY[i] + 12)
                     && playing) {
                 alive = true;
@@ -315,13 +313,13 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void playGame(Graphics2D g2d) {
-        if (alive) {
-            death();
-        } else {
+        if (!alive) {
             movePacman();
             drawPacman(g2d);
             moveGhosts(g2d);
             checkMaze();
+        } else {
+            death();
         }
     }
 
@@ -374,11 +372,10 @@ public class Board extends JPanel implements ActionListener {
         drawMaze(g2d);
         drawScore(g2d);
 
-        if (playing) {
+        if (playing)
             playGame(g2d);
-        } else {
+        else
             showIntroScreen(g2d);
-        }
 
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
@@ -390,32 +387,32 @@ public class Board extends JPanel implements ActionListener {
         @Override
         public void keyPressed(KeyEvent e) {
 
+            // To get each arrow code
             int key = e.getKeyCode();
 
             if (playing) {
-                if (key == KeyEvent.VK_LEFT) {
+                if (key == KeyEvent.VK_A) {
                     reqDX = -1;
                     reqDY = 0;
-                } else if (key == KeyEvent.VK_RIGHT) {
+                } else if (key == KeyEvent.VK_D) {
                     reqDX = 1;
                     reqDY = 0;
-                } else if (key == KeyEvent.VK_UP) {
+                } else if (key == KeyEvent.VK_W) {
                     reqDX = 0;
                     reqDY = -1;
-                } else if (key == KeyEvent.VK_DOWN) {
+                } else if (key == KeyEvent.VK_S) {
                     reqDX = 0;
                     reqDY = 1;
                 } else if (key == KeyEvent.VK_ESCAPE && timer.isRunning()) {
                     playing = false;
                 }
             } else {
-                if (key == KeyEvent.VK_SPACE) {
+                if (key == KeyEvent.VK_ENTER) {
                     playing = true;
                     initGame();
                 }
             }
         }
-
     }
 
     @Override

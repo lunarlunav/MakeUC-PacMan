@@ -13,7 +13,7 @@ public class Pacman extends JFrame {
         Pacman pacman = new Pacman();
         pacman.setVisible(true);
         pacman.setTitle("Retro Pacman");
-        pacman.setSize(380, 420);
+        pacman.setSize(378, 425);
         pacman.setDefaultCloseOperation(EXIT_ON_CLOSE);
         pacman.setLocationRelativeTo(null);
     }
